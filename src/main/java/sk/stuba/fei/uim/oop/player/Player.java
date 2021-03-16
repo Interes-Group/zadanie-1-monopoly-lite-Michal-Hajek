@@ -1,7 +1,10 @@
 package sk.stuba.fei.uim.oop.player;
 
+import sk.stuba.fei.uim.oop.fields.Buildings;
+import sk.stuba.fei.uim.oop.fields.Fields;
 import sk.stuba.fei.uim.oop.gamecyclus.Gamecyclus;
 
+import java.util.List;
 import java.util.Random;
 public class Player extends Gamecyclus {
     private String name;
@@ -10,12 +13,16 @@ public class Player extends Gamecyclus {
     private int currentPosition;
     private boolean cantMove=true;
 
+    public void setCurrentPosition(int currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
     Random random = new Random();
 
     public Player(int order,String name) {
         this.currentPosition=0;
         this.order = order;
-        this.budget=100000;
+        this.budget=10000000;
         this.name=name;
     }
     public int getBudget() {
@@ -30,7 +37,7 @@ public class Player extends Gamecyclus {
     }
 
     public int rollTheDice(){
-        return random.nextInt(6)+1;
+         return random.nextInt(6)+1;
     }
     public void printPLayerInfo(){
         System.out.println("Tvoje financie: "+budget);
@@ -65,5 +72,14 @@ public class Player extends Gamecyclus {
     public void goToPrison(int index){
         this.currentPosition=index;
         cantMove=false;
+    }
+
+    public void bancrot(List<Fields> fieldsInGame,Player player){
+        for (Fields building:fieldsInGame) {
+           if(building instanceof Buildings){
+               if(((Buildings) building).getOwner().equals(player))
+                   ((Buildings) building).setOwner(null);
+           }
+        }
     }
 }

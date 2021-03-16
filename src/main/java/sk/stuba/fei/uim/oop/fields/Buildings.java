@@ -7,6 +7,14 @@ public class Buildings extends Fields {
     private int rent;
     private Player owner;
 
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+
+    public Player getOwner() {
+        return owner;
+    }
+
     public int getPrice() {
         return price;
     }
@@ -21,30 +29,32 @@ public class Buildings extends Fields {
     public void runAction(Player player, Scanner console) {
         if (owner == null) {
             System.out.println("Budova je volna, môžeš ju kúpiť za "+getPrice()+"Tvoj stav uctu je: "+
-                    player.getBudget()+" stlač y/n");
-            String s = console.nextLine();
+                    player.getBudget()+" stlač 1/0");
+            int s = console.nextInt();
             switch (s) {
-                case "y":
+                case 1:
                     buyBulding(player);
                     System.out.println("Kupil si budovu:");
                     break;
-                case "n":
+                case 0:
                     System.out.println("Nekupil si budovu:");
                     break;
                 default:
                     break;
             }
         } else {
-            System.out.println("PLatiš hráčovi :" + owner);
             payment(player);
         }
     }
 
-
     public void payment(Player playerPaid) {
-        if (owner != null)
+        if (owner != null && !playerPaid.equals(owner)){
+            System.out.println("PLatiš hráčovi :" + owner.getName());
             playerPaid.playerPayments(rent);
-        owner.incomes(rent);
+            owner.incomes(rent);
+        }
+        else System.out.println("Stojis na vlastnej budove");
+
     }
 
     public void buyBulding(Player client) {
