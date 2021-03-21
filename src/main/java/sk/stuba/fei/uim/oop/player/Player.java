@@ -22,7 +22,7 @@ public class Player extends Gamecyclus {
     public Player(int order,String name) {
         this.currentPosition=0;
         this.order = order;
-        this.budget=10000000;
+        this.budget=10000;
         this.name=name;
     }
     public int getBudget() {
@@ -51,14 +51,13 @@ public class Player extends Gamecyclus {
         this.budget=this.budget+incomesValue;
     }
 
-    public void playerMovement() throws EndGameException {
+    public void playerMovement() throws BancrotOfPlayerException {
         if(getBudget()<0) {
-           throw new EndGameException("Skrachoval si");
+           throw new BancrotOfPlayerException("Skrachoval si");
         }
         if(cantMove)
             currentPosition+=rollTheDice();
             if(currentPosition>23)
-
                 currentPosition=currentPosition-23;
         if (!cantMove){
             System.out.println("Toto kolo stojíš,lebo si vo vazeni");

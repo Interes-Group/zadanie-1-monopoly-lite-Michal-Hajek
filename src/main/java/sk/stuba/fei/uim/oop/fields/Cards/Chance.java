@@ -1,14 +1,15 @@
-package sk.stuba.fei.uim.oop.fields;
+package sk.stuba.fei.uim.oop.fields.Cards;
 
-import sk.stuba.fei.uim.oop.player.EndGameException;
+import sk.stuba.fei.uim.oop.fields.Fields;
+import sk.stuba.fei.uim.oop.player.BancrotOfPlayerException;
 import sk.stuba.fei.uim.oop.player.Player;
 
 import java.util.*;
 
-public class Chance extends Fields{
+public class Chance extends Fields {
     private List<Integer> cards=new ArrayList<>(List.of(1, 2, 3, 4, 5));
     @Override
-    public void runAction(Player player, Scanner console) throws EndGameException {
+    public void runAction(Player player, Scanner console) throws BancrotOfPlayerException {
         System.out.println("Si na šanci");
         Integer card= cards.get(0);
         switch (card){

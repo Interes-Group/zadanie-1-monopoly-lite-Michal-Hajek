@@ -1,13 +1,12 @@
 package sk.stuba.fei.uim.oop.gameinitialization;
 
 import sk.stuba.fei.uim.oop.fields.Buildings;
-import sk.stuba.fei.uim.oop.fields.Chance;
+import sk.stuba.fei.uim.oop.fields.Cards.Chance;
 import sk.stuba.fei.uim.oop.fields.Fields;
 import sk.stuba.fei.uim.oop.fields.corner.Police;
 import sk.stuba.fei.uim.oop.fields.corner.Prison;
 import sk.stuba.fei.uim.oop.fields.corner.Start;
 import sk.stuba.fei.uim.oop.fields.corner.Tax;
-
 import sk.stuba.fei.uim.oop.player.Player;
 
 import java.util.ArrayList;
@@ -15,33 +14,31 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public  class GameInitialization  {
-//    private int countOfPlayers;
-
+public abstract class GameInitialization  {
     protected List<Fields> gameFields=new ArrayList<>();
     protected List<Player> playersInGame=new ArrayList<>();
-
     public List<Fields> getGameFields() {
         return gameFields;
     }
 
-    Scanner input = new Scanner(System.in);
-
     public List<Player> getPlayersInGame() {
         return playersInGame;
     }
-//    public GameInitialization(int countOfPlayers) {
-//        this.countOfPlayers = countOfPlayers;
-//    }
-    public void createPlayers(int countOfPlayers) {
+    public void createPlayers(int countOfPlayers,Scanner input) {
         String name;
         for (int i = 0; i < countOfPlayers; i++) {
-            System.out.println( "Enter name of player with number " + i);
+            System.out.println( "Enter name of player with number " + i+1);
             name = input.next();
-            playersInGame.add(new Player(i,name));
+            playersInGame.add(new Player(i+1,name));
         }
     }
-
+    public boolean endGame(){
+        if(playersInGame.size()==1){
+            System.out.println("Víťaz monopoly je: "+playersInGame.get(0));
+            return false;
+        }
+        return true;
+    }
     public void createFieldsMap(){
         for(int i=0;i<24;i++){
             if(i==0)
@@ -56,6 +53,20 @@ public  class GameInitialization  {
                 this.gameFields.add(new Chance("Chance",i));
             else
                 this.gameFields.add(new Buildings("Building",i));
+        }
+    }
+    public int inputCountOfPlayers(Scanner console){
+        int countOfPlayers;
+        System.out.println("Enter number of players:");
+        try {
+            String numberOfPlayers= console.nextLine();
+            countOfPlayers=Integer.parseInt(numberOfPlayers);
+            return countOfPlayers;
+        }catch (NumberFormatException e){
+            System.err.println(e);
+            System.out.println("Vstup musi byt cislo! Zadajze cislo: ");
+             return inputCountOfPlayers(console);
+
         }
     }
 }

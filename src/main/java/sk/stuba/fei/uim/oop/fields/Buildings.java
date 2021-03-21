@@ -7,9 +7,7 @@ public class Buildings extends Fields {
     private int rent;
     private Player owner;
 
-    public void setOwner(Player owner) {
-        this.owner = owner;
-    }
+    public void setOwner(Player owner) { this.owner = owner; }
 
     public Player getOwner() {
         return owner;
@@ -34,7 +32,6 @@ public class Buildings extends Fields {
             switch (s) {
                 case 1:
                     buyBulding(player);
-                    System.out.println("Kupil si budovu:");
                     break;
                 case 0:
                     System.out.println("Nekupil si budovu:");
@@ -58,9 +55,12 @@ public class Buildings extends Fields {
     }
 
     public void buyBulding(Player client) {
-        if (owner == null) {
+        if (owner == null && client.getBudget()>price ) {
             client.buy(price);
             owner = client;
+            System.out.println("Kupil si budovu:");
         }
+        else
+            System.out.println("Nemas dostatok penazi na to aby si mohol kupit budovu");
     }
 }
