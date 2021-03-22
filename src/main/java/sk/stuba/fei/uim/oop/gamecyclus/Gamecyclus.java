@@ -30,7 +30,6 @@ public class Gamecyclus extends GameInitialization {
                     }
                 } catch (BancrotOfPlayerException e) {
                     player.bancrot(fieldsInGame, player);
-
                     endGame = endGame();
                 }
             }
