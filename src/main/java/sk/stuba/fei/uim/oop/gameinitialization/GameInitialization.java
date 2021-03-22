@@ -42,8 +42,8 @@ public abstract class GameInitialization {
 
     protected void createPlayers(int countOfPlayers, Scanner input) {
         String name;
-        for (int i = 0; i < countOfPlayers; i++) {
-            System.out.println("Enter name of player with number " + i + 1);
+        for (int i = 1; i < countOfPlayers+1; i++) {
+            System.out.println("Enter name of player with number " + i);
             name = input.next();
             playersInGame.add(new Player(i + 1, name));
         }

@@ -7,7 +7,6 @@ public class Card1 extends CardPackage {
     public void cardAction(Player player) {
         System.out.println("Presun sa na policko vazenie");
         player.goToPrison(6);
-        isUsed=true;
     }
 }
 
