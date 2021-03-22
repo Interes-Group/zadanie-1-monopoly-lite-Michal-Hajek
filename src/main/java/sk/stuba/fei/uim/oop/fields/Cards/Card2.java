@@ -12,4 +12,3 @@ public class Card2 extends CardPackage {
 
     }
 }
-

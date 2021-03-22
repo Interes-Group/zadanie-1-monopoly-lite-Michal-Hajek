@@ -6,17 +6,16 @@ import sk.stuba.fei.uim.oop.player.BancrotOfPlayerException;
 import sk.stuba.fei.uim.oop.player.Player;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class Gamecyclus extends GameInitialization {
     private boolean endGame = true;
 
     public void gameRun(List<Player> playersInGame, List<Fields> fieldsInGame) {
-        Scanner console = new Scanner(System.in);
+
         createCardPackage();
         createFieldsMap();
-        int countOfPlayers = inputCountOfPlayers(console);
-        createPlayers(countOfPlayers, console);
+        int countOfPlayers = inputCountOfPlayers(getConsole());
+        createPlayers(countOfPlayers, getConsole());
         while (endGame) {
             for (Player player : playersInGame) {
                 try {
@@ -25,7 +24,7 @@ public class Gamecyclus extends GameInitialization {
                         player.playerMovement();
                         player.printPLayerInfo(player);
                         Fields actual = fieldsInGame.get(player.getCurrentPosition());
-                        actual.runAction(player, console);
+                        actual.runAction(player);
                         System.out.println("************************************");
                     }
                 } catch (BancrotOfPlayerException e) {

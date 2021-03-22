@@ -9,6 +9,5 @@ public class Assignment1 {
     public static void main(String[] args) {
         Gamecyclus game=new Gamecyclus();
         game.gameRun(game.getPlayersInGame(),game.getGameFields());
-
     }
 }

@@ -19,6 +19,11 @@ public abstract class GameInitialization {
     private List<Fields> gameFields = new ArrayList<>();
     private List<Player> playersInGame = new ArrayList<>();
     private List<CardPackage> cards = new ArrayList<>();
+    private Scanner console = new Scanner(System.in);
+
+    public Scanner getConsole() {
+        return console;
+    }
 
     public List<CardPackage> getCards() {
         return cards;
@@ -68,17 +73,17 @@ public abstract class GameInitialization {
     protected void createFieldsMap() {
         for (int i = 0; i < 24; i++) {
             if (i == 0)
-                this.gameFields.add(new Start("Start", i));
+                this.gameFields.add(new Start("Start", i,getConsole()));
             else if (i == 6)
-                this.gameFields.add(new Prison("Prison", i));
+                this.gameFields.add(new Prison("Prison", i,getConsole()));
             else if (i == 12)
-                this.gameFields.add(new Tax("Tax", i));
+                this.gameFields.add(new Tax("Tax", i,getConsole()));
             else if (i == 18)
-                this.gameFields.add(new Police("Police", i));
+                this.gameFields.add(new Police("Police", i,getConsole()));
             else if (i == 5 || i == 15)
-                this.gameFields.add(new Chance("Chance", i,cards));
+                this.gameFields.add(new Chance("Chance", i,cards,getConsole()));
             else
-                this.gameFields.add(new Buildings("Building", i));
+                this.gameFields.add(new Buildings("Building", i,getConsole()));
         }
     }
 

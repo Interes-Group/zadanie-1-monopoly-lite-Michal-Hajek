@@ -9,14 +9,12 @@ import java.util.*;
 public  class Chance extends Fields {
     private List<CardPackage> cards;
     @Override
-    public  void runAction(Player player, Scanner console )throws BancrotOfPlayerException {
+    public  void runAction(Player player)throws BancrotOfPlayerException {
         player.drawCard(player,cards);
     }
 
-    public Chance(String type, int index,List<CardPackage> cards) {
-        super(type, index);
+    public Chance(String type, int index,List<CardPackage> cards,Scanner console) {
+        super(type, index,console);
         this.cards=cards;
-
     }
-
 }

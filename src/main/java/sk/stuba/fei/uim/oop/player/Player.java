@@ -16,7 +16,6 @@ public class Player extends Gamecyclus {
     private boolean cantMove = true;
     private boolean outOfgame = false;
 
-
     public boolean isOutOfgame() {
         return outOfgame;
     }

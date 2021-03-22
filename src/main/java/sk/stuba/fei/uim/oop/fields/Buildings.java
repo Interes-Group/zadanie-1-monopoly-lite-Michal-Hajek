@@ -1,10 +1,8 @@
 package sk.stuba.fei.uim.oop.fields;
 
-import sk.stuba.fei.uim.oop.fields.Cards.CardPackage;
 import sk.stuba.fei.uim.oop.player.BancrotOfPlayerException;
 import sk.stuba.fei.uim.oop.player.Player;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Buildings extends Fields {
@@ -24,18 +22,18 @@ public class Buildings extends Fields {
         return price;
     }
 
-    public Buildings(String type, int index) {
-        super(type, index);
+    public Buildings(String type, int index, Scanner console) {
+        super(type, index, console);
         this.price = index * 2000;
         this.rent = index * 2000;
     }
 
     @Override
-    public void runAction(Player player, Scanner console) throws BancrotOfPlayerException {
+    public void runAction(Player player) throws BancrotOfPlayerException {
         if (owner == null) {
             System.out.println("Budova je volna, môžeš ju kúpiť za " + getPrice() + "Tvoj stav uctu je: " +
                     player.getBudget() + " stlač 1/0");
-            int s = console.nextInt();
+            int s = getConsole().nextInt();
             switch (s) {
                 case 1:
                     buyBulding(player);
@@ -44,6 +42,7 @@ public class Buildings extends Fields {
                     System.out.println("Nekupil si budovu:");
                     break;
                 default:
+                    System.out.println("Nekupil si budovu, pretože si neklikol 1/0");
                     break;
             }
         } else {

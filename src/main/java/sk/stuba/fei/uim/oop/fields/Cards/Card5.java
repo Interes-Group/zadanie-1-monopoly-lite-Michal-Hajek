@@ -8,5 +8,4 @@ public class Card5 extends CardPackage {
         System.out.println("Potiahol si si kartu5.Posun sa o dve policka dozadu");
         player.setCurrentPosition(player.getCurrentPosition()-2);
     }
-
 }

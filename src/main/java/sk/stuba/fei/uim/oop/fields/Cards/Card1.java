@@ -9,5 +9,3 @@ public class Card1 extends CardPackage {
         player.goToPrison(6);
     }
 }
-
-
