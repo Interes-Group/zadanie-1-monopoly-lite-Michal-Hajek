@@ -1,7 +1,7 @@
 package sk.stuba.fei.uim.oop.gameinitialization;
 
 import sk.stuba.fei.uim.oop.fields.Buildings;
-import sk.stuba.fei.uim.oop.fields.Cards.Chance;
+import sk.stuba.fei.uim.oop.fields.Cards.*;
 import sk.stuba.fei.uim.oop.fields.Fields;
 import sk.stuba.fei.uim.oop.fields.corner.Police;
 import sk.stuba.fei.uim.oop.fields.corner.Prison;
@@ -15,8 +15,14 @@ import java.util.Scanner;
 
 
 public abstract class GameInitialization  {
-    protected List<Fields> gameFields=new ArrayList<>();
-    protected List<Player> playersInGame=new ArrayList<>();
+    private List<Fields> gameFields=new ArrayList<>();
+    private List<Player> playersInGame=new ArrayList<>();
+    private  List<CardPackage> cards=new ArrayList<>();
+
+    public List<CardPackage> getCards() {
+        return cards;
+    }
+
     public List<Fields> getGameFields() {
         return gameFields;
     }
@@ -24,7 +30,17 @@ public abstract class GameInitialization  {
     public List<Player> getPlayersInGame() {
         return playersInGame;
     }
-    public void createPlayers(int countOfPlayers,Scanner input) {
+
+
+
+    protected void createCardPackage(){
+        cards.add(new Card1());
+        cards.add(new Card2());
+        cards.add(new Card3());
+        cards.add(new Card4());
+        cards.add(new Card5());
+    }
+    protected void createPlayers(int countOfPlayers,Scanner input) {
         String name;
         for (int i = 0; i < countOfPlayers; i++) {
             System.out.println( "Enter name of player with number " + i+1);
@@ -32,14 +48,22 @@ public abstract class GameInitialization  {
             playersInGame.add(new Player(i+1,name));
         }
     }
-    public boolean endGame(){
-        if(playersInGame.size()==1){
-            System.out.println("Víťaz monopoly je: "+playersInGame.get(0));
+    protected boolean endGame(){
+        int count=0;
+        String name="Nikto nie je víťaz niekde je chyba";
+        for (Player player:playersInGame) {
+            if(!player.isOutOfgame()) {
+                name = player.getName();
+                count += 1;
+            }
+        }
+        if(count==1){
+            System.out.println("Víťaz monopoly je: "+name);
             return false;
         }
         return true;
     }
-    public void createFieldsMap(){
+    protected void createFieldsMap(){
         for(int i=0;i<24;i++){
             if(i==0)
                 this.gameFields.add(new Start("Start",i));
@@ -55,7 +79,7 @@ public abstract class GameInitialization  {
                 this.gameFields.add(new Buildings("Building",i));
         }
     }
-    public int inputCountOfPlayers(Scanner console){
+    protected int inputCountOfPlayers(Scanner console){
         int countOfPlayers;
         System.out.println("Enter number of players:");
         try {

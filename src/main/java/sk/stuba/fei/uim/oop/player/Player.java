@@ -1,6 +1,7 @@
 package sk.stuba.fei.uim.oop.player;
 
 import sk.stuba.fei.uim.oop.fields.Buildings;
+import sk.stuba.fei.uim.oop.fields.Cards.*;
 import sk.stuba.fei.uim.oop.fields.Fields;
 import sk.stuba.fei.uim.oop.gamecyclus.Gamecyclus;
 
@@ -12,7 +13,16 @@ public class Player extends Gamecyclus {
     private int budget;
     private int currentPosition;
     private boolean cantMove=true;
+    private  boolean outOfgame=false;
 
+
+    public boolean isOutOfgame() {
+        return outOfgame;
+    }
+
+    public void setOutOfgame(boolean outOfgame) {
+        this.outOfgame = outOfgame;
+    }
     public void setCurrentPosition(int currentPosition) {
         this.currentPosition = currentPosition;
     }
@@ -39,7 +49,8 @@ public class Player extends Gamecyclus {
     public int rollTheDice(){
          return random.nextInt(6)+1;
     }
-    public void printPLayerInfo(){
+    public void printPLayerInfo(Player player){
+        System.out.println("Je na ťahu:" + player.getName());
         System.out.println("Tvoje financie: "+budget);
         System.out.println("Tvoja aktuálna pozícia je : "+currentPosition+"\n");
     }
@@ -72,13 +83,31 @@ public class Player extends Gamecyclus {
         this.currentPosition=index;
         cantMove=false;
     }
+    public void drawCard(Player player) throws BancrotOfPlayerException {
+        List<CardPackage>cards=getCards();
+        CardPackage actualCard=cards.get(0);
+        if(actualCard instanceof Card1)
+            ((Card1) actualCard).cardAction(player);
+        if(actualCard instanceof Card2)
+            ((Card2) actualCard).cardAction(player);
+        if(actualCard instanceof Card3)
+            ((Card3) actualCard).cardAction(player);
+        if(actualCard instanceof Card4)
+            ((Card4)actualCard).cardAction(player);
+        if(actualCard instanceof Card5 )
+            ((Card5) actualCard).cardAction(player);
+        cards.remove(0);
+        cards.add(actualCard);
+    }
 
     public void bancrot(List<Fields> fieldsInGame,Player player){
+        player.setOutOfgame(true);
         for (Fields building:fieldsInGame) {
            if(building instanceof Buildings){
-               if(((Buildings) building).getOwner().equals(player))
+               if(((Buildings) building).getOwner() != null &&((Buildings) building).getOwner().equals(player))
                    ((Buildings) building).setOwner(null);
            }
         }
+        System.out.println("!!TVOJE BUDOVY PREPADLI BANKE, HRACI ICH MOZU ZNOVA KUPIT!!");
     }
 }

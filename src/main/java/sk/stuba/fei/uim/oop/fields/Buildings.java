@@ -49,6 +49,7 @@ public class Buildings extends Fields {
             System.out.println("PLatiš hráčovi :" + owner.getName());
             playerPaid.playerPayments(rent);
             owner.incomes(rent);
+            System.out.println("Tvoj stav uctu:"+playerPaid.getBudget());
         }
         else System.out.println("Stojis na vlastnej budove");
 
@@ -59,6 +60,7 @@ public class Buildings extends Fields {
             client.buy(price);
             owner = client;
             System.out.println("Kupil si budovu:");
+            System.out.println("Tvoj stav uctu:"+client.getBudget());
         }
         else
             System.out.println("Nemas dostatok penazi na to aby si mohol kupit budovu");
