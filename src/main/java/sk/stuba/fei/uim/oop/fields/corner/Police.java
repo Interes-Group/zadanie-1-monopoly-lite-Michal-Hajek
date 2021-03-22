@@ -15,7 +15,7 @@ public class Police extends CornerFields {
         super(type, index,console);
     }
 
-    void cantMoveForTurn(Player player){
+    private void cantMoveForTurn(Player player){
         player.goToPrison(6);
     }
 }

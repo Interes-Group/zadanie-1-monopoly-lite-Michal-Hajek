@@ -17,7 +17,7 @@ public class Tax extends CornerFields {
         super(type, index,console);
     }
 
-    public void payTaxes(Player player) throws BancrotOfPlayerException {
+    private void payTaxes(Player player) throws BancrotOfPlayerException {
         player.playerPayments(10000);
     }
 }

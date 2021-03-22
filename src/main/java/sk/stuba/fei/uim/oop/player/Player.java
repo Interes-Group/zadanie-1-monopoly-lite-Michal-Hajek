@@ -3,12 +3,11 @@ package sk.stuba.fei.uim.oop.player;
 import sk.stuba.fei.uim.oop.fields.Buildings;
 import sk.stuba.fei.uim.oop.fields.Cards.*;
 import sk.stuba.fei.uim.oop.fields.Fields;
-import sk.stuba.fei.uim.oop.gamecyclus.Gamecyclus;
 
 import java.util.List;
 import java.util.Random;
 
-public class Player extends Gamecyclus {
+public class Player  {
     private String name;
     private int order;
     private int budget;
@@ -56,7 +55,7 @@ public class Player extends Gamecyclus {
     public void printPLayerInfo(Player player) {
         System.out.println("Je na ťahu:" + player.getName());
         System.out.println("Tvoje financie: " + budget);
-        System.out.println("Tvoja aktuálna pozícia je : " + currentPosition + "\n");
+        System.out.println("Tvoja aktuálna pozícia je : " + currentPosition);
     }
 
     public void playerPayments(int paymentValue) throws BancrotOfPlayerException {
@@ -70,7 +69,7 @@ public class Player extends Gamecyclus {
     }
 
     public void playerMovement() throws BancrotOfPlayerException {
-        if (getBudget() < 0) {
+        if (budget < 0) {
             throw new BancrotOfPlayerException("Skrachoval si");
         }
         if (cantMove)

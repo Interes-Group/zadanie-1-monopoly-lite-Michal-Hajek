@@ -16,28 +16,12 @@ import java.util.Scanner;
 
 
 public abstract class GameInitialization {
-    private List<Fields> gameFields = new ArrayList<>();
-    private List<Player> playersInGame = new ArrayList<>();
+    protected List<Fields> gameFields = new ArrayList<>();
+    protected List<Player> playersInGame = new ArrayList<>();
     private List<CardPackage> cards = new ArrayList<>();
-    private Scanner console = new Scanner(System.in);
+    protected Scanner console = new Scanner(System.in);
 
-    public Scanner getConsole() {
-        return console;
-    }
-
-    public List<CardPackage> getCards() {
-        return cards;
-    }
-
-    public List<Fields> getGameFields() {
-        return gameFields;
-    }
-
-    public List<Player> getPlayersInGame() {
-        return playersInGame;
-    }
-
-    protected void createCardPackage() {
+    private void createCardPackage() {
         cards.add(new Card1());
         cards.add(new Card2());
         cards.add(new Card3());
@@ -71,19 +55,20 @@ public abstract class GameInitialization {
     }
 
     protected void createFieldsMap() {
+        createCardPackage();
         for (int i = 0; i < 24; i++) {
             if (i == 0)
-                this.gameFields.add(new Start("Start", i,getConsole()));
+                this.gameFields.add(new Start("Start", i,console));
             else if (i == 6)
-                this.gameFields.add(new Prison("Prison", i,getConsole()));
+                this.gameFields.add(new Prison("Prison", i,console));
             else if (i == 12)
-                this.gameFields.add(new Tax("Tax", i,getConsole()));
+                this.gameFields.add(new Tax("Tax", i,console));
             else if (i == 18)
-                this.gameFields.add(new Police("Police", i,getConsole()));
+                this.gameFields.add(new Police("Police", i,console));
             else if (i == 5 || i == 15)
-                this.gameFields.add(new Chance("Chance", i,cards,getConsole()));
+                this.gameFields.add(new Chance("Chance", i,cards,console));
             else
-                this.gameFields.add(new Buildings("Building", i,getConsole()));
+                this.gameFields.add(new Buildings("Building", i,console));
         }
     }
 

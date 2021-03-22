@@ -17,7 +17,7 @@ public abstract class Fields {
 
     public abstract void runAction(Player player) throws BancrotOfPlayerException;
 
-    public Fields(String type, int index,Scanner console) {
+    protected Fields(String type, int index,Scanner console) {
         this.type = type;
         this.index = index;
         this.console=console;
