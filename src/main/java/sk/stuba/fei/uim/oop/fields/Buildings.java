@@ -31,7 +31,7 @@ public class Buildings extends Fields {
     @Override
     public void runAction(Player player) throws BancrotOfPlayerException {
         if (owner == null) {
-            System.out.println("Budova je volna, môžeš ju kúpiť za " + getPrice() + "Tvoj stav uctu je: " +
+            System.out.println("Budova je volna, môžeš ju kúpiť za " + getPrice() + ".Tvoj stav uctu je: " +
                     player.getBudget() + " stlač 1/0");
             int s = getConsole().nextInt();
             switch (s) {
@@ -52,7 +52,7 @@ public class Buildings extends Fields {
 
     public void payment(Player playerPaid) throws BancrotOfPlayerException {
         if (owner != null && !playerPaid.equals(owner)) {
-            System.out.println("PLatiš hráčovi :" + owner.getName());
+            System.out.println("PLatiš hráčovi :" + owner.getName()+"Suma na zaplatenie: "+rent);
             playerPaid.playerPayments(rent);
             owner.incomes(rent);
             if (playerPaid.getBudget() < 0) {

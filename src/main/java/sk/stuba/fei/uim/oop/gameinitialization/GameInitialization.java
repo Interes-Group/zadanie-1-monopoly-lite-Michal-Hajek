@@ -32,7 +32,7 @@ public abstract class GameInitialization {
     protected void createPlayers(int countOfPlayers, Scanner input) {
         String name;
         for (int i = 1; i < countOfPlayers+1; i++) {
-            System.out.println("Enter name of player with number " + i);
+            System.out.println("Zadaj meno hraca cislo:  " + i);
             name = input.next();
             playersInGame.add(new Player(i + 1, name));
         }
@@ -74,7 +74,7 @@ public abstract class GameInitialization {
 
     protected int inputCountOfPlayers(Scanner console) {
         int countOfPlayers;
-        System.out.println("Enter number of players(min-max)2-6:");
+        System.out.println("Zadaj pocet hracov(min-max)2-6:");
         try {
             String numberOfPlayers = console.nextLine();
             countOfPlayers = Integer.parseInt(numberOfPlayers);

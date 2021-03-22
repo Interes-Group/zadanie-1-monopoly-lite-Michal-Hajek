@@ -32,7 +32,7 @@ public class Player  {
     public Player(int order, String name) {
         this.currentPosition = 0;
         this.order = order;
-        this.budget = 10000;
+        this.budget = 100000;
         this.name = name;
     }
 

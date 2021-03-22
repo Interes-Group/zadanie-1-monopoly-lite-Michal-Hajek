@@ -10,6 +10,7 @@ public  class Chance extends Fields {
     private List<CardPackage> cards;
     @Override
     public  void runAction(Player player)throws BancrotOfPlayerException {
+        System.out.println("Stojis na poličku šanca, potiahni si kartu!");
         player.drawCard(player,cards);
     }
 

@@ -7,8 +7,7 @@ import sk.stuba.fei.uim.oop.player.Player;
 
 public class Gamecyclus extends GameInitialization {
     private boolean endGame = true;
-
-    public void gameRun() {
+    public Gamecyclus(){
         createFieldsMap();
         int countOfPlayers = inputCountOfPlayers(console);
         createPlayers(countOfPlayers, console);
