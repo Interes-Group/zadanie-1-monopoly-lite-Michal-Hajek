@@ -1,8 +1,10 @@
 package sk.stuba.fei.uim.oop.fields;
 
+import sk.stuba.fei.uim.oop.fields.Cards.CardPackage;
 import sk.stuba.fei.uim.oop.player.BancrotOfPlayerException;
 import sk.stuba.fei.uim.oop.player.Player;
 
+import java.util.List;
 import java.util.Scanner;
 
 public abstract class Fields {

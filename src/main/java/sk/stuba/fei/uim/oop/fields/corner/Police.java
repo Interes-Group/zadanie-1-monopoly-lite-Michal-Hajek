@@ -1,7 +1,9 @@
 package sk.stuba.fei.uim.oop.fields.corner;
 
+import sk.stuba.fei.uim.oop.fields.Cards.CardPackage;
 import sk.stuba.fei.uim.oop.player.Player;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Police extends CornerFields {

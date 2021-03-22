@@ -13,10 +13,10 @@ public class Gamecyclus extends GameInitialization {
 
     public void gameRun(List<Player> playersInGame, List<Fields> fieldsInGame) {
         Scanner console = new Scanner(System.in);
+        createCardPackage();
         createFieldsMap();
         int countOfPlayers = inputCountOfPlayers(console);
         createPlayers(countOfPlayers, console);
-        createCardPackage();
         while (endGame) {
             for (Player player : playersInGame) {
                 try {
@@ -31,8 +31,11 @@ public class Gamecyclus extends GameInitialization {
                 } catch (BancrotOfPlayerException e) {
                     player.bancrot(fieldsInGame, player);
                     endGame = endGame();
+                    break;
                 }
             }
         }
+        System.out.println("------------------------------------------------");
+        System.out.println("Vypracoval: Michal Hájek 104463");
     }
 }

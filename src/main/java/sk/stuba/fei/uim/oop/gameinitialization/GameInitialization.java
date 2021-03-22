@@ -76,7 +76,7 @@ public abstract class GameInitialization {
             else if (i == 18)
                 this.gameFields.add(new Police("Police", i));
             else if (i == 5 || i == 15)
-                this.gameFields.add(new Chance("Chance", i));
+                this.gameFields.add(new Chance("Chance", i,cards));
             else
                 this.gameFields.add(new Buildings("Building", i));
         }
