@@ -14,8 +14,8 @@ public  class Chance extends Fields {
         player.drawCard(player,cards);
     }
 
-    public Chance(String type, int index,List<CardPackage> cards,Scanner console) {
-        super(type, index,console);
+    public Chance(String type, int index,List<CardPackage> cards) {
+        super(type, index);
         this.cards=cards;
     }
 }

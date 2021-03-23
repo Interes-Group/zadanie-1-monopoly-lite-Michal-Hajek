@@ -13,8 +13,8 @@ public class Tax extends CornerFields {
         System.out.println("Stav tvojho účtu je:"+player.getBudget());
     }
 
-    public Tax(String type, int index, Scanner console) {
-        super(type, index,console);
+    public Tax(String type, int index) {
+        super(type, index);
     }
 
     private void payTaxes(Player player) throws BancrotOfPlayerException {

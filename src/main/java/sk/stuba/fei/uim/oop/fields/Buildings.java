@@ -9,6 +9,7 @@ public class Buildings extends Fields {
     private int price;
     private int rent;
     private Player owner;
+    private Scanner console;
 
     public void setOwner(Player owner) {
         this.owner = owner;
@@ -23,9 +24,10 @@ public class Buildings extends Fields {
     }
 
     public Buildings(String type, int index, Scanner console) {
-        super(type, index, console);
+        super(type, index);
         this.price = index * 2000;
         this.rent = index * 2000;
+        this.console=console;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class Buildings extends Fields {
         if (owner == null) {
             System.out.println("Budova je volna, môžeš ju kúpiť za " + getPrice() + ".Tvoj stav uctu je: " +
                     player.getBudget() + " stlač 1/0");
-            int s = getConsole().nextInt();
+            int s = console.nextInt();
             switch (s) {
                 case 1:
                     buyBulding(player);

@@ -58,15 +58,15 @@ public abstract class GameInitialization {
         createCardPackage();
         for (int i = 0; i < 24; i++) {
             if (i == 0)
-                this.gameFields.add(new Start("Start", i,console));
+                this.gameFields.add(new Start("Start", i));
             else if (i == 6)
-                this.gameFields.add(new Prison("Prison", i,console));
+                this.gameFields.add(new Prison("Prison", i));
             else if (i == 12)
-                this.gameFields.add(new Tax("Tax", i,console));
+                this.gameFields.add(new Tax("Tax", i));
             else if (i == 18)
-                this.gameFields.add(new Police("Police", i,console));
+                this.gameFields.add(new Police("Police", i));
             else if (i == 5 || i == 15)
-                this.gameFields.add(new Chance("Chance", i,cards,console));
+                this.gameFields.add(new Chance("Chance", i,cards));
             else
                 this.gameFields.add(new Buildings("Building", i,console));
         }

@@ -2,8 +2,6 @@ package sk.stuba.fei.uim.oop.fields.corner;
 
 import sk.stuba.fei.uim.oop.player.Player;
 
-import java.util.Scanner;
-
 public class Police extends CornerFields {
     @Override
     public void runAction(Player player) {
@@ -11,8 +9,8 @@ public class Police extends CornerFields {
         cantMoveForTurn(player);
     }
 
-    public Police(String type, int index, Scanner console) {
-        super(type, index,console);
+    public Police(String type, int index) {
+        super(type, index);
     }
 
     private void cantMoveForTurn(Player player){
