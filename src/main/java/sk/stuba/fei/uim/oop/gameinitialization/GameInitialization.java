@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public abstract class GameInitialization {
     protected List<Fields> gameFields = new ArrayList<>();
     protected List<Player> playersInGame = new ArrayList<>();

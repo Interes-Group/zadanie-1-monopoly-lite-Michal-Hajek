@@ -3,8 +3,6 @@ package sk.stuba.fei.uim.oop.fields.corner;
 import sk.stuba.fei.uim.oop.player.BancrotOfPlayerException;
 import sk.stuba.fei.uim.oop.player.Player;
 
-import java.util.Scanner;
-
 public class Tax extends CornerFields {
     @Override
     public void runAction(Player player) throws BancrotOfPlayerException {
