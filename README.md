@@ -1,5 +1,5 @@
 # Zadanie 1 - Monopoly lite
-B-OOP 2021
+B-OOP 2021a
 
 Vašou úlohou je naprogramovať zjednodušenú hru Monopoly ako konzolovú hru v jazyku Java. Veľkosť hracieho poľa je 24 políčok, z čoho sú:
 
