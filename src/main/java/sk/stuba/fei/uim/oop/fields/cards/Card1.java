@@ -1,5 +1,6 @@
-package sk.stuba.fei.uim.oop.fields.Cards;
+package sk.stuba.fei.uim.oop.fields.cards;
 
+import sk.stuba.fei.uim.oop.fields.CardPackage;
 import sk.stuba.fei.uim.oop.player.Player;
 
 public class Card1 extends CardPackage {

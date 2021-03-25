@@ -3,6 +3,7 @@ package sk.stuba.fei.uim.oop.fields;
 import sk.stuba.fei.uim.oop.player.BancrotOfPlayerException;
 import sk.stuba.fei.uim.oop.player.Player;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Buildings extends Fields {
@@ -27,24 +28,37 @@ public class Buildings extends Fields {
         super(type, index);
         this.price = index * 2000;
         this.rent = index * 2000;
-        this.console=console;
+        this.console = console;
     }
 
     @Override
     public void runAction(Player player) throws BancrotOfPlayerException {
         if (owner == null) {
-            System.out.println("Budova je volna, môžeš ju kúpiť za " + getPrice() + ".Tvoj stav uctu je: " +
-                    player.getBudget() + " stlač 1/0");
-            int s = console.nextInt();
-            switch (s) {
+            System.out.println("Budova je volna, môžeš ju kúpiť za " + getPrice() + "\nTvoj stav uctu je: " +
+                    player.getBudget() + " stlač 1-kupit/ iné číslo -nemam zaujem");
+
+            boolean error = false;
+            int menu = 0;
+            do {
+                try {
+                    menu = console.nextInt();
+                    error = false;
+                } catch (InputMismatchException e) {
+                    console.next();
+                    System.out.println("Prosim stlač 1-kupit/ iné číslo -nemam zaujem!!!");
+                    error = true;
+                }
+            } while (error);
+
+            switch (menu) {
                 case 1:
                     buyBulding(player);
                     break;
                 case 0:
-                    System.out.println("Nekupil si budovu:");
+                    System.out.println("Nekupil si budovu.");
                     break;
                 default:
-                    System.out.println("Nekupil si budovu, pretože si neklikol 1/0");
+                    System.out.println("Nekupil si budovu.");
                     break;
             }
         } else {
@@ -54,7 +68,7 @@ public class Buildings extends Fields {
 
     public void payment(Player playerPaid) throws BancrotOfPlayerException {
         if (owner != null && !playerPaid.equals(owner)) {
-            System.out.println("PLatiš hráčovi :" + owner.getName()+"Suma na zaplatenie: "+rent);
+            System.out.println("PLatiš hráčovi :" + owner.getName() + " Suma na zaplatenie: " + rent);
             playerPaid.playerPayments(rent);
             owner.incomes(rent);
             if (playerPaid.getBudget() < 0) {

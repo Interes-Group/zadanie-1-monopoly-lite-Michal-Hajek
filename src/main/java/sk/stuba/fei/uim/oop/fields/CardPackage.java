@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.fields.Cards;
+package sk.stuba.fei.uim.oop.fields;
 
 import sk.stuba.fei.uim.oop.player.BancrotOfPlayerException;
 import sk.stuba.fei.uim.oop.player.Player;

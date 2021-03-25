@@ -1,7 +1,8 @@
 package sk.stuba.fei.uim.oop.player;
 
 import sk.stuba.fei.uim.oop.fields.Buildings;
-import sk.stuba.fei.uim.oop.fields.Cards.*;
+import sk.stuba.fei.uim.oop.fields.CardPackage;
+import sk.stuba.fei.uim.oop.fields.cards.*;
 import sk.stuba.fei.uim.oop.fields.Fields;
 
 import java.util.List;
@@ -55,7 +56,7 @@ public class Player  {
     public void printPLayerInfo(Player player) {
         System.out.println("Je na ťahu:" + player.getName());
         System.out.println("Tvoje financie: " + budget);
-        System.out.println("Tvoja aktuálna pozícia je : " + currentPosition);
+        System.out.println("Tvoja aktuálna pozícia po hode kockou je : " + currentPosition);
     }
 
     public void playerPayments(int paymentValue) throws BancrotOfPlayerException {

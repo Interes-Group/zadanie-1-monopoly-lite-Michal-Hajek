@@ -11,6 +11,7 @@ public class Gamecyclus extends GameInitialization {
         createFieldsMap();
         int countOfPlayers = inputCountOfPlayers(console);
         createPlayers(countOfPlayers, console);
+
         while (endGame) {
             for (Player player : playersInGame) {
                 try {
@@ -20,6 +21,7 @@ public class Gamecyclus extends GameInitialization {
                         player.printPLayerInfo(player);
                         Fields actual = gameFields.get(player.getCurrentPosition());
                         actual.runAction(player);
+                        System.out.println("Tvoje aktualne financie na konci kola:"+player.getBudget());
                         System.out.println("************************************");
                     }
                 } catch (BancrotOfPlayerException e) {

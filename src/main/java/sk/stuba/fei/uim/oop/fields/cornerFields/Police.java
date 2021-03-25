@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.fields.corner;
+package sk.stuba.fei.uim.oop.fields.cornerFields;
 
 import sk.stuba.fei.uim.oop.player.Player;
 

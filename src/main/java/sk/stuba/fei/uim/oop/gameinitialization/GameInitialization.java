@@ -1,12 +1,14 @@
 package sk.stuba.fei.uim.oop.gameinitialization;
 
 import sk.stuba.fei.uim.oop.fields.Buildings;
-import sk.stuba.fei.uim.oop.fields.Cards.*;
+import sk.stuba.fei.uim.oop.fields.CardPackage;
+import sk.stuba.fei.uim.oop.fields.cards.*;
+import sk.stuba.fei.uim.oop.fields.Chance;
 import sk.stuba.fei.uim.oop.fields.Fields;
-import sk.stuba.fei.uim.oop.fields.corner.Police;
-import sk.stuba.fei.uim.oop.fields.corner.Prison;
-import sk.stuba.fei.uim.oop.fields.corner.Start;
-import sk.stuba.fei.uim.oop.fields.corner.Tax;
+import sk.stuba.fei.uim.oop.fields.cornerFields.Police;
+import sk.stuba.fei.uim.oop.fields.cornerFields.Prison;
+import sk.stuba.fei.uim.oop.fields.cornerFields.Start;
+import sk.stuba.fei.uim.oop.fields.cornerFields.Tax;
 import sk.stuba.fei.uim.oop.player.Player;
 import sk.stuba.fei.uim.oop.player.WrongInputExceptions;
 
@@ -38,15 +40,15 @@ public abstract class GameInitialization {
     }
 
     protected boolean endGame() {
-        int count = 0;
+        int countOfPlayersInGame = 0;
         String name = "Nikto nie je víťaz niekde je chyba";
         for (Player player : playersInGame) {
             if (!player.isOutOfgame()) {
                 name = player.getName();
-                count += 1;
+                countOfPlayersInGame += 1;
             }
         }
-        if (count == 1) {
+        if (countOfPlayersInGame == 1) {
             System.out.println("Víťaz monopoly je: " + name);
             return false;
         }
@@ -55,19 +57,19 @@ public abstract class GameInitialization {
 
     protected void createFieldsMap() {
         createCardPackage();
-        for (int i = 0; i < 24; i++) {
-            if (i == 0)
-                this.gameFields.add(new Start("Start", i));
-            else if (i == 6)
-                this.gameFields.add(new Prison("Prison", i));
-            else if (i == 12)
-                this.gameFields.add(new Tax("Tax", i));
-            else if (i == 18)
-                this.gameFields.add(new Police("Police", i));
-            else if (i == 5 || i == 15)
-                this.gameFields.add(new Chance("Chance", i,cards));
+        for (int tileIndex = 0; tileIndex < 24; tileIndex++) {
+            if (tileIndex == 0)
+                this.gameFields.add(new Start("Start", tileIndex));
+            else if (tileIndex == 6)
+                this.gameFields.add(new Prison("Prison", tileIndex));
+            else if (tileIndex == 12)
+                this.gameFields.add(new Tax("Tax", tileIndex));
+            else if (tileIndex == 18)
+                this.gameFields.add(new Police("Police", tileIndex));
+            else if (tileIndex == 5 || tileIndex == 15)
+                this.gameFields.add(new Chance("Chance", tileIndex,cards));
             else
-                this.gameFields.add(new Buildings("Building", i,console));
+                this.gameFields.add(new Buildings("Building", tileIndex,console));
         }
     }
 
